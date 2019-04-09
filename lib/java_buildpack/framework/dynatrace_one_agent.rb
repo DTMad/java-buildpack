@@ -42,6 +42,7 @@ module JavaBuildpack
         JavaBuildpack::Util::Cache::InternetAvailability.instance.available(
           true, 'The Dynatrace One Agent download location is always accessible'
         ) do
+          @logger.warn { "SKIP_ERRORS flag is set to #{SKIP_ERRORS}"}
           download(@version, @uri) { |file| expand file }
         end
 
